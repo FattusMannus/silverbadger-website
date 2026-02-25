@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Badger Technologies | AI & Automation for Time-Saving</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES (New Organic Palette) --- */
+        :root {
+            --forest-green: #2E4A3F;
+            --warm-amber: #E89241;
+            --soft-sage: #A3B18A;
+            --light-clay: #F7F2ED;
+            --deep-charcoal: #333333;
+            
+            --font-heading: 'Montserrat', Arial, sans-serif;
+            --font-body: 'Open Sans', Helvetica, sans-serif;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--deep-charcoal);
+            background-color: var(--light-clay);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--warm-amber);
+            color: #ffffff;
+            font-family: var(--font-heading);
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            cursor: pointer ;
+        }
+
+        .btn:hover {
+            background-color: #d17d31; /* Slightly darker amber for hover */
+            transform: translateY(-2px);
+        }
+
+        /* --- HEADER (Simplified) --- */
+        /* --- HEADER (Simplified) --- */
+        header {
+            background-color: var(--forest-green);
+            padding: 1rem 0;
+            position: sticky; /* Make header sticky */
+            top: 0;
+            z-index: 1000; /* Ensure it's above other content */
+        }
+
+        .header-content { /* New class to control flex behavior */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo .silver-badger-svg {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo .silver-badger-svg path {
+            fill: var(--warm-amber); /* Apply color to SVG paths */
+        }
+
+        .logo-text {
+            color: var(--warm-amber);
+            font-family: var(--font-heading);
+        }
+
+        .header-btn { /* Style for the new button in the header */
+            padding: 8px 16px; /* Slightly smaller padding for header button */
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .header-btn {
+                width: fit-content; /* Adjust button width on mobile */
+            }
+        }
+
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 6rem 0;
+            background-color: var(--light-clay);
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            color: var(--forest-green);
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(46, 74, 63, 0.15); /* Tinted with Forest Green */
+        }
+
+        /* --- PAIN POINT STRIP --- */
+        .pain-points {
+            background-color: rgba(163, 177, 138, 0.2); /* Soft Sage at 20% opacity */
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .pain-points h2 {
+            color: var(--forest-green);
+            max-width: 800px;
+            margin: 0 auto 1rem auto;
+        }
+
+        .pain-points p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* --- SERVICES GRID --- */
+        .services {
+            padding: 5rem 0;
+        }
+
+        .services h2 {
+            text-align: center;
+            color: var(--forest-green);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--warm-amber);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--forest-green);
+            margin-top: 1rem;
+        }
+
+        /* --- WHY SILVER BADGER (CORE VALUES) --- */
+        .why-us {
+            background-color: var(--forest-green);
+            color: #ffffff;
+            padding: 5rem 0;
+        }
+
+        .why-us h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .comparison {
+            display: flex;
+            gap: 2rem;
+            background-color: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .comparison > div {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .comparison h3 {
+            color: var(--soft-sage);
+        }
+
+        .comparison ul {
+            list-style-type: none;
+        }
+
+        .comparison li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .comparison li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--warm-amber);
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            color: var(--forest-green);
+        }
+        
+        .testimonials .witty-sub {
+            color: var(--soft-sage);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--soft-sage);
+        }
+
+        /* --- CONTACT SECTION (formerly final-cta) --- */
+        .contact-section {
+            background: linear-gradient(135deg, var(--forest-green), #1f332b);
+            color: #ffffff;
+            text-align: center;
+            padding: 6rem 0;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            color: #ffffff;
+        }
+
+        .contact-form-container {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+
+        .contact-form-container label {
+            display: block;
+            color: var(--deep-charcoal);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-form-container input[type="text"],
+        .contact-form-container input[type="email"],
+        .contact-form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--soft-sage);
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        .contact-form-container button[type="submit"] {
+            width: 100%;
+            border: none;
+            margin-top: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--deep-charcoal);
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--soft-sage);
+            margin: 0 10px;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero .container, .comparison {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .hero-image {
+                order: -1; /* Image above text on mobile */
+            }
+            .hero-image img {
+                max-width: 80%;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+                        <a href="#" class="logo">
+                <svg class="silver-badger-svg" width="40" height="40" viewBox="0 0 520 588" preserveAspectRatio="xMidYMid meet">
+                    <g transform="translate(0.000000,588.000000) scale(0.100000,-0.100000)">
+                        <path d="M804 5849 c-16 -17 -65 -61 -109 -97 -44 -37 -125 -107 -181 -157
+-55 -49 -113 -101 -130 -114 -84 -70 -184 -166 -184 -177 0 -7 43 -140 96
+-296 53 -156 109 -326 125 -378 l28 -95 -65 -195 c-95 -281 -351 -1012 -379
+-1082 -5 -12 -3 -18 6 -18 7 0 49 -26 93 -58 45 -32 91 -64 102 -72 12 -8 82
+-57 155 -109 74 -52 166 -117 206 -144 39 -27 86 -61 104 -76 l31 -27 -57
+-154 c-31 -85 -67 -184 -80 -220 -13 -36 -69 -193 -126 -350 -125 -350 -249
+-707 -249 -717 0 -5 60 -40 133 -79 247 -132 701 -376 927 -499 124 -67 313
+-168 420 -225 107 -56 224 -120 260 -140 36 -21 94 -52 130 -70 61 -30 310
+-165 464 -251 38 -22 77 -39 88 -39 10 0 74 30 141 67 164 89 179 97 352 190
+83 45 222 120 310 168 88 49 216 118 285 155 69 36 145 77 170 91 25 14 86 47
+135 74 76 40 154 83 360 197 17 9 100 54 185 99 85 45 162 87 170 94 8 7 79
+45 158 85 78 40 142 74 142 75 0 2 -14 40 -31 86 -17 46 -57 161 -89 254 -54
+159 -88 254 -285 805 -111 310 -110 309 -88 326 10 7 90 64 178 125 88 62 188
+133 222 158 34 25 107 77 162 116 56 38 101 76 101 85 0 16 -82 256 -203 595
+-154 433 -229 672 -222 707 4 18 38 125 75 238 37 113 89 274 116 359 l48 154
+-36 31 c-40 35 -277 245 -294 261 -6 5 -60 53 -119 105 -60 52 -126 112 -148
+132 -39 37 -39 37 -75 22 -21 -8 -49 -23 -64 -34 -15 -11 -33 -20 -40 -20 -8
+0 -22 -6 -33 -14 -11 -7 -90 -50 -175 -93 -85 -44 -248 -128 -362 -187 l-207
+-106 -852 0 -853 0 -80 44 c-45 24 -211 110 -371 191 -159 81 -294 151 -299
+156 -6 5 -16 9 -23 9 -8 0 -26 9 -41 20 -15 11 -43 26 -63 34 -35 15 -37 15
+-65 -15z m3539 -241 c38 -162 101 -403 208 -796 27 -101 31 -146 11 -116 -7
+10 -99 72 -507 339 -340 223 -465 306 -465 310 0 2 142 77 316 167 174 90 335
+173 358 185 22 12 44 23 47 23 3 0 17 -51 32 -112z m-3400 87 c20 -8 57 -28
+84 -43 27 -16 171 -91 321 -167 150 -76 272 -141 272 -145 0 -5 -6 -10 -14
+-13 -19 -8 -576 -368 -723 -468 -24 -15 -90 -61 -148 -100 -58 -39 -108 -69
+-111 -66 -3 2 8 51 24 108 17 57 51 185 77 284 26 99 51 194 56 210 15 51 87
+328 94 365 12 57 13 58 68 35z m-203 -82 c0 -9 -66 -258 -110 -413 -16 -58
+-48 -179 -70 -270 -23 -91 -45 -169 -49 -173 -4 -4 -22 41 -40 100 -18 59 -55
+177 -82 262 -58 179 -68 147 85 280 54 47 133 116 175 153 73 64 91 76 91 61z
+m4002 -227 c62 -55 114 -105 116 -112 2 -7 -17 -75 -42 -151 -25 -76 -63 -194
+-85 -263 -34 -109 -40 -121 -46 -95 -4 17 -15 59 -26 95 -27 98 -189 738 -189
+750 0 11 62 -40 272 -224z m-1352 -109 c0 -8 -11 -69 -25 -138 -13 -68 -40
+-214 -60 -324 -19 -110 -51 -276 -70 -370 -19 -93 -62 -318 -95 -500 -69 -374
+-168 -896 -201 -1061 l-22 -110 156 -315 c107 -214 153 -315 143 -317 -11 -2
+-117 38 -268 102 -31 13 -86 16 -333 16 l-296 0 -161 -66 c-88 -36 -162 -64
+-163 -62 -2 2 69 149 157 327 l161 325 -47 215 c-25 119 -55 266 -66 326 -12
+61 -54 279 -95 485 -40 206 -110 566 -155 800 -44 234 -91 479 -104 545 -13
+66 -21 123 -19 128 2 4 355 7 784 7 639 0 779 -2 779 -13z m-1680 -58 c0 -11
+20 -119 44 -242 24 -122 67 -341 95 -487 28 -146 60 -305 71 -355 10 -49 30
+-148 44 -220 14 -71 41 -210 61 -309 19 -98 35 -192 35 -209 l0 -31 -27 26
+c-16 14 -80 63 -143 108 -63 46 -176 129 -250 185 -74 56 -141 105 -147 109
+-10 6 -13 -62 -13 -323 l0 -331 315 0 315 0 4 -22 c3 -13 15 -68 26 -123 12
+-55 25 -116 31 -136 5 -20 9 -44 9 -52 0 -16 -320 -671 -325 -665 -5 5 -61
+110 -150 283 -48 94 -91 175 -95 180 -4 6 -27 46 -50 90 -24 44 -87 161 -140
+260 -54 99 -114 214 -134 255 -20 41 -41 82 -46 90 -19 31 -161 301 -245 465
+-48 94 -102 197 -119 230 -105 196 -266 514 -266 523 0 6 145 107 322 224 382
+254 387 256 597 397 90 61 168 108 173 105 4 -3 8 -14 8 -25z m2045 -127 c121
+-80 330 -218 465 -307 135 -89 278 -183 318 -208 39 -26 72 -50 72 -53 0 -3
+-44 -87 -98 -187 -54 -100 -119 -222 -144 -272 -86 -169 -225 -440 -285 -555
+-33 -63 -99 -189 -146 -280 -46 -91 -142 -273 -212 -405 -70 -132 -179 -338
+-241 -459 -62 -120 -116 -221 -118 -224 -3 -2 -10 6 -15 19 -5 13 -77 164
+-161 334 -148 304 -151 311 -141 350 9 33 40 184 57 273 l4 22 315 0 315 0 0
+330 c0 182 -3 330 -7 329 -5 0 -30 -18 -58 -40 -27 -21 -76 -57 -109 -80 -32
+-23 -135 -99 -230 -170 -110 -83 -172 -124 -174 -115 -2 7 17 117 42 242 25
+126 57 292 71 369 14 77 35 185 45 240 36 183 121 638 151 810 36 200 35 198
+51 189 7 -4 112 -73 233 -152z m-3150 -847 c37 -71 97 -186 133 -255 123 -238
+190 -365 235 -445 25 -44 43 -83 39 -86 -4 -4 -52 -12 -107 -18 -55 -6 -238
+-27 -408 -47 -169 -20 -310 -34 -314 -30 -4 3 7 46 24 94 122 343 163 460 223
+632 95 271 102 291 105 288 1 -2 32 -61 70 -133z m4160 -125 c35 -102 98 -284
+140 -405 112 -321 120 -344 112 -351 -6 -7 -103 4 -517 56 -135 17 -256 31
+-269 33 -32 2 -37 21 -13 54 11 15 71 129 134 253 167 326 309 604 315 614 7
+10 13 -6 98 -254z m-3044 -638 c117 -88 279 -211 293 -224 6 -4 -85 -8 -202
+-8 l-212 0 0 155 c0 85 4 155 8 155 5 0 55 -35 113 -78z m1899 -77 l0 -155
+-205 0 c-113 0 -205 3 -205 8 1 4 24 25 54 47 255 193 340 255 347 255 5 0 9
+-70 9 -155z m-2510 -127 c102 -199 489 -924 526 -985 23 -40 40 -73 37 -73 -6
+0 -143 94 -388 269 -296 210 -357 254 -665 477 -118 85 -250 178 -292 206 -65
+42 -93 68 -74 68 2 0 80 11 173 24 92 13 256 34 363 46 107 12 200 23 205 25
+6 2 26 4 46 4 35 1 38 -2 69 -61z m3266 37 c392 -45 584 -72 584 -83 0 -4 -47
+-38 -103 -75 -56 -37 -127 -87 -159 -110 -63 -47 -387 -280 -517 -373 -167
+-118 -436 -312 -530 -381 -35 -27 -73 -55 -84 -63 -16 -12 -13 -1 15 50 19 36
+79 151 133 255 54 105 128 246 165 315 37 69 109 207 160 308 52 100 99 182
+106 182 6 0 110 -11 230 -25z m108 -857 c41 -114 88 -249 105 -300 28 -87 152
+-439 171 -483 24 -57 72 -197 68 -200 -3 -4 -187 102 -257 148 -20 13 -70 43
+-111 67 -41 24 -113 68 -160 97 -84 54 -242 149 -395 239 -44 26 -112 67 -152
+92 l-72 45 97 71 c104 77 389 282 530 383 48 34 90 58 94 55 4 -4 41 -100 82
+-214z m-3618 179 c27 -18 79 -54 117 -79 61 -42 152 -107 439 -315 55 -40 104
+-73 109 -73 29 0 -5 -26 -118 -90 -71 -40 -189 -110 -263 -155 -74 -45 -202
+-122 -285 -170 -82 -48 -226 -133 -318 -188 -92 -54 -170 -97 -172 -95 -3 3 6
+31 20 64 14 32 75 201 136 374 273 772 268 760 279 760 4 0 30 -15 56 -33z
+m2225 -577 l196 -84 -35 -101 c-20 -55 -42 -109 -49 -121 -7 -12 -57 -39 -116
+-64 -56 -23 -136 -57 -177 -75 -77 -33 -187 -62 -197 -51 -6 6 109 142 139
+164 26 19 99 130 90 136 -8 5 -168 -11 -190 -19 -7 -2 -21 -24 -31 -47 -11
+-24 -39 -71 -64 -106 l-45 -63 -73 111 c-46 68 -82 112 -94 115 -54 10 -165
+13 -165 4 0 -20 59 -95 150 -192 51 -54 90 -101 86 -104 -13 -13 -123 20 -268
+80 -84 36 -162 67 -174 71 -38 11 -61 49 -98 160 -20 59 -36 109 -34 110 8 4
+80 31 148 56 107 39 137 52 199 82 l56 26 275 -2 275 -1 196 -85z m692 -102
+c111 -66 204 -122 206 -124 4 -3 -10 -20 -202 -250 -60 -71 -166 -199 -238
+-284 -71 -85 -183 -220 -250 -300 -66 -80 -145 -174 -174 -210 -325 -396 -499
+-600 -512 -600 -11 0 -138 145 -290 332 -40 49 -104 126 -143 171 -94 111
+-164 194 -203 241 -17 22 -50 60 -73 85 -22 25 -97 114 -166 196 -69 83 -140
+166 -158 185 -18 19 -45 51 -59 70 -14 19 -31 40 -37 45 -6 6 -62 71 -124 145
+-62 74 -120 143 -128 152 -13 16 -13 18 4 24 11 4 105 58 210 121 105 62 197
+113 205 113 8 0 45 -24 84 -53 75 -56 75 -57 158 -267 41 -105 54 -115 262
+-198 334 -134 286 -122 470 -122 l163 0 113 51 c63 27 141 61 174 74 33 12 95
+39 138 59 77 35 79 37 106 99 16 34 41 98 56 141 15 44 34 90 42 102 17 26
+142 122 161 124 2 0 94 -55 205 -122z m-2565 -315 c55 -65 153 -181 218 -257
+66 -77 144 -169 174 -206 92 -112 301 -361 365 -435 34 -38 72 -84 86 -101 33
+-43 207 -248 264 -311 26 -29 40 -53 33 -53 -8 0 -18 4 -23 9 -6 5 -62 35
+-125 68 -63 33 -160 84 -215 115 -55 30 -149 81 -210 113 -60 31 -114 61 -120
+65 -10 8 -84 47 -270 145 -60 32 -126 67 -145 78 -19 11 -75 41 -125 67 -188
+99 -710 382 -718 390 -5 4 33 31 85 60 51 29 116 67 145 86 28 19 54 34 56 34
+3 0 54 30 114 67 89 55 303 181 310 182 1 1 47 -52 101 -116z m2985 64 c51
+-30 151 -90 222 -134 72 -44 185 -113 252 -154 67 -41 121 -78 119 -83 -1 -6
+-56 -40 -122 -76 -65 -37 -144 -80 -174 -97 -30 -17 -113 -62 -185 -101 -71
+-38 -211 -114 -310 -168 -99 -53 -200 -108 -225 -122 -112 -60 -403 -219 -481
+-263 -48 -27 -90 -49 -94 -49 -3 0 -37 -17 -73 -39 -92 -53 -262 -141 -262
+-135 0 3 35 47 78 98 42 51 113 137 157 192 44 54 96 116 116 139 19 22 62 74
+95 115 32 41 113 139 179 216 66 78 149 177 185 220 36 43 105 126 154 184 49
+58 127 151 174 208 48 56 90 102 95 102 5 0 50 -24 100 -53z"/>
+                    </g>
+                </svg>
+                <span class="logo-text">Silver Badger Technologies</span>
+            </a>
+            <a href="#contact-section" class="btn header-btn">Get a Free Consultation</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h1>Reclaim Your Time with AI & Automation.</h1>
+                <p>Small business owners are overwhelmed. We leverage practical AI and smart automation to eliminate repetitive tasks, giving you back precious hours to focus on what truly matters – running and living your life.</p>
+                <a href="#contact-section" class="btn">Stop Wasting Time, Start Automating</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://unsplash.com/photos/8YG31Xn4dSw/download?force=true&w=1920" alt="Abstract image representing efficiency and automation">
+            </div>
+        </div>
+    </section>
+
+    <section class="pain-points">
+        <div class="container">
+            <h2>Too many tasks, not enough hours?</h2>
+            <p>You didn't start your business to drown in admin<br/>Our bespoke AI and automation solutions are designed to free you from the daily grind, so you can breathe easier and work smarter, not harder.</p>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Smart Automation for Maximum Time Savings</h2>
+            <div class="services-grid">
+                <div class="card">
+                    <svg width="40" height="40" stroke="var(--warm-amber)" fill="none" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V6.5A2.5 2.5 0 0 0 17.5 4h-11A2.5 2.5 0 0 0 4 6.5v13zM12 9v5m-2-2h4"/></svg>
+                    <h3>Workflow Automation</h3>
+                    <p>Stop wasting hours on repetitive data entry, email sorting, and task management. We build custom automations that connect your tools and handle the grunt work for you.</p>
+                </div>
+                <div class="card">
+                    <svg width="40" height="40" stroke="var(--warm-amber)" fill="none" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <h3>AI-Powered Content & Communication</h3>
+                    <p>Generate marketing copy, customer responses, and internal reports in minutes, not hours. Automate your outreach and ensure consistent, on-brand communication with AI assistance.</p>
+                </div>
+                <div class="card">
+                    <svg width="40" height="40" stroke="var(--warm-amber)" fill="none" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <h3>Intelligent Data Processing</h3>
+                    <p>Automate data extraction, analysis, and report generation. Turn mountains of information into actionable insights quickly, without manual sifting or complex spreadsheets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="container">
+            <h2>Cut Down on Admin, Not Ambition.</h2>
+            <div class="comparison">
+                <div>
+                    <h3>The Time Drain</h3>
+                    <ul>
+                        <li>Hours lost to manual, repetitive tasks.</li>
+                        <li>Missed opportunities due to being bogged down.</li>
+                        <li>Stressed, overwhelmed, and burnt out.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #ffffff;">The Silver Badger Solution</h3>
+                    <ul>
+                        <li>Automate up to 80% of routine operations.</li>
+                        <li>Free up your schedule for strategic thinking.</li>
+                        <li>Empowered, efficient, and in control of your time.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--<section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say About Reclaiming Their Day</h2>
+            <p class="witty-sub">"Less busy work, more actual work. The badger knows best."</p>
+            <div class="testimonial-card">
+                <p>"Silver Badger didn't just save me time; they saved my sanity. Automating our order processing and client follow-ups has given me back a full day every week. It's truly transformative."</p>
+                <br>
+                <strong>- Alex T., E-commerce Entrepreneur</strong>
+            </div>
+        </div>
+    </section>-->
+
+    <section id="contact-section" class="contact-section">
+        <div class="container">
+            <h2>Ready to Reclaim Your Time?</h2>
+            <p>Let's discuss how AI and automation can simplify your operations and free up your schedule.</p>
+            <div class="contact-form-container">
+                <form action="#" method="POST">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+                    <label for="email">Your Business Email:</label>
+                    <input type="email" id="email" name="email" placeholder="your@business.com" required>
+
+                    <label for="business-name">Your Business Name:</label>
+                    <input type="text" id="business-name" name="business_name" placeholder="Acme Solutions Ltd.">
+
+                    <label for="message">Tell us about your time-saving goals:</label>
+                    <textarea id="message" name="message" placeholder="I'm looking to automate..." rows="6" required></textarea>
+
+                    <button type="submit" class="btn">Get a Free Time-Saving Consultation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Silver Badger Technologies. All rights reserved.</p>
+            <!--<p>
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Ethical AI Statement</a>
+            </p>-->
+        </div>
+    </footer>
+
+</body>
+</html>
